@@ -33,7 +33,11 @@ pub fn search_and_launch(mode: Mode, search_text: &str) -> Result<()> {
         ),
     };
 
-    let limit_clause = if search_text.is_empty() { "LIMIT 50" } else { "" };
+    let limit_clause = if search_text.is_empty() {
+        "LIMIT 50"
+    } else {
+        ""
+    };
 
     let search_pattern = format!("%{}%", search_text);
 

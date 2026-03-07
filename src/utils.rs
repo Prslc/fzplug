@@ -1,7 +1,7 @@
 use anyhow::{Context, Result};
-use std::path::PathBuf;
-use glob::glob;
 use dirs;
+use glob::glob;
+use std::path::PathBuf;
 
 pub fn get_firefox_db_path() -> Result<PathBuf> {
     let home = dirs::home_dir().context("Cannot get HOME dir")?;

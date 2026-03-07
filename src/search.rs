@@ -1,6 +1,6 @@
 use anyhow::{Context, Result};
-use std::process::Command;
 use reqwest;
+use std::process::Command;
 
 pub fn search_web(query: &str) -> Result<()> {
     if query.is_empty() {
@@ -28,7 +28,8 @@ pub fn search_web(query: &str) -> Result<()> {
 fn fetch_suggestions(query: &str) -> Result<Vec<String>> {
     let url = format!("https://duckduckgo.com/ac/?q={}", query);
     let response = reqwest::blocking::get(&url).context("Failed to fetch suggestions")?;
-    let suggestions: Vec<serde_json::Value> = response.json().context("Failed to parse suggestions")?;
+    let suggestions: Vec<serde_json::Value> =
+        response.json().context("Failed to parse suggestions")?;
 
     Ok(suggestions
         .into_iter()
