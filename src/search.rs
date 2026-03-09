@@ -36,3 +36,13 @@ fn fetch_suggestions(query: &str) -> Result<Vec<String>> {
         .filter_map(|item: serde_json::Value| item["phrase"].as_str().map(|s| s.to_string()))
         .collect::<Vec<String>>())
 }
+
+pub fn search_github(query: &str) -> Result<()> {
+    let search_url = format!("https://github.com/search?q={}", query);
+    Command::new("xdg-open")
+        .arg(search_url)
+        .spawn()
+        .context("Failed to open web browser")?;
+
+    Ok(())
+}
