@@ -10,7 +10,8 @@ fn main() -> Result<()> {
         "[b]  Browser Bookmarks",
         "[h]  Browser History",
         "[s]  Web Search",
-        "[g]  Github Search"
+        "[g]  Github Search",
+        "[v]  Bilibili Search"
     ]
     .join("\n");
 
@@ -33,6 +34,7 @@ fn main() -> Result<()> {
         "h" => firefox::search_and_launch(firefox::Mode::History, search_text)?,
         "s" => search::search_web(search_text)?,
         "g" => search::search_github(search_text)?,
+        "v" => search::search_bilibili(search_text)?,
         _ => {}
     }
 

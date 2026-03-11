@@ -46,3 +46,13 @@ pub fn search_github(query: &str) -> Result<()> {
 
     Ok(())
 }
+
+pub fn search_bilibili(query: &str) -> Result<()> {
+    let search_url = format!("https://search.bilibili.com/all?keyword={}", query);
+    Command::new("xdg-open")
+        .arg(search_url)
+        .spawn()
+        .context("Failed to open web browser")?;
+
+    Ok(())
+}
